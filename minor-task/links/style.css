@@ -1,0 +1,89 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.list-container {
+    display: flex;
+    gap: 40px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* General List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    background: #ddd;
+    margin: 5px 0;
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+/* Blue Circular List */
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #69b7f5;
+    color: white;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Red Boxed List */
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background: #ff5e5e;
+    color: white;
+    font-weight: bold;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+
+.box:hover{
+    content: "";
+    position: relative;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-10%);
+}
+
+.arrow {
+    position: relative;
+}
+
+.arrow::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 10px solid #ff5e5e;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+/* Sub-list Styling */
+.sub-list {
+    padding-left: 40px;
+}
