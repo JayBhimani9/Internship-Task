@@ -12,4 +12,10 @@ Task 4:- SDLC
 
 Task 5:- What is React 
 
-Task 6:-
+Task 6:-Formatting tags in HTML
+
+Task 7:-How to create tables in an HTML document
+
+Task 8:-Different types of lists
+
+Task 9:-Introduction to iFrames
