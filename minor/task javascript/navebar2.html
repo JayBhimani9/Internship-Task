@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Second Navbar (Etsy-like) */
+        .navbar2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar2 .top-nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: space-between;
+        }
+        
+        .navbar2 .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        
+        .navbar2 .search-bar input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+        }
+        
+        .navbar2 .bottom-nav {
+            display: flex;
+            gap: 15px;
+            padding: 10px 0;
+            overflow-x: auto;
+        }
+        
+        .navbar2 .bottom-nav a {
+            text-decoration: none;
+            color: gray;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar2 .top-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .navbar2 .search-bar input {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Second Navbar -->
+    <nav class="navbar2">
+        <div class="top-nav">
+            <div class="logo"><strong>Etsy</strong></div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for anything">
+            </div>
+            <div class="auth">
+                <a href="#">Sign in</a>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <a href="#">Jewelry & Accessories</a>
+            <a href="#">Clothing & Shoes</a>
+            <a href="#">Home & Living</a>
+            <a href="#">Wedding & Party</a>
+            <a href="#">Toys & Entertainment</a>
+            <a href="#">Art & Collectibles</a>
+            <a href="#">Craft Supplies & Tools</a>
+            <a href="#">Vintage</a>
+        </div>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* First Navbar */
+        .navbar1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar1 .logo {
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+        }
+        
+        .navbar1 .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .navbar1 .nav-links a {
+            text-decoration: none;
+            color: gray;
+            font-size: 16px;
+        }
+        
+        .navbar1 .nav-links a.active {
+            text-decoration: underline;
+            color: black;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar1 .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- First Navbar -->
+    <nav class="navbar1">
+        <div class="logo">JACK WATKINS</div>
+        <div class="nav-links">
+            <a href="#" class="active">home</a>
+            <a href="#">work</a>
+            <a href="#">services</a>
+            <a href="#">about</a>
+            <a href="#">journal</a>
+            <a href="#">for designers</a>
+            <a href="#">contact</a>
+        </div>
+    </nav>
+    
+</body>
+</html>

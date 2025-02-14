@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Cards</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .job-cards {
+            display: flex;
+            gap: 20px;
+        }
+        .job-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            position: relative;
+        }
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .progress-bar-container {
+            background: #e0e0e0;
+            height: 6px;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 100%;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            background: red;
+            border-radius: 5px;
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="job-cards">
+        <div class="job-card">
+            <img src="mailchimp-logo.png" alt="Mailchimp" class="company-logo">
+            <h3>Senior Product Designer-Singapore</h3>
+            <p>Mailchimp - 1 day ago</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress1"></div>
+            </div>
+            <p><span id="applied1">12</span> Applied of <span id="capacity1">50</span> capacity</p>
+        </div>
+        <div class="job-card">
+            <img src="dribbble-logo.png" alt="Dribbble" class="company-logo">
+            <h3>Junior Product Designer-Singapore</h3>
+            <p>Dribbble - 4 days ago</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress2"></div>
+            </div>
+            <p><span id="applied2">42</span> Applied of <span id="capacity2">70</span> capacity</p>
+        </div>
+        <div class="job-card">
+            <img src="reddit-logo.png" alt="Reddit" class="company-logo">
+            <h3>Software Architect Java - USA</h3>
+            <p>Reddit - 2 days ago</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress3"></div>
+            </div>
+            <p><span id="applied3">52</span> Applied of <span id="capacity3">100</span> capacity</p>
+        </div>
+    </div>
+
+    <script>
+        function updateProgressBar(appliedId, capacityId, progressBarId) {
+            let applied = document.getElementById(appliedId).innerText;
+            let capacity = document.getElementById(capacityId).innerText;
+            let progressBar = document.getElementById(progressBarId);
+            let percentage = (applied / capacity) * 100;
+            progressBar.style.width = percentage + "%";
+        }
+
+        updateProgressBar("applied1", "capacity1", "progress1");
+        updateProgressBar("applied2", "capacity2", "progress2");
+        updateProgressBar("applied3", "capacity3", "progress3");
+    </script>
+</body>
+</html>

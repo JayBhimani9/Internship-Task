@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background: orange;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: darkorange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="firstName" placeholder="First Name" required>
+                <span class="error" id="firstNameError"></span>
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="lastName" placeholder="Last Name" required>
+                <span class="error" id="lastNameError"></span>
+            </div>
+            <div class="form-group">
+                <label>Department / Office</label>
+                <select id="department" required>
+                    <option value="">Select your Department/Office</option>
+                    <option value="HR">HR</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+                <span class="error" id="departmentError"></span>
+            </div>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Username" required>
+                <span class="error" id="usernameError"></span>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Password" required>
+                <span class="error" id="passwordError"></span>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <span class="error" id="confirmPasswordError"></span>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="E-Mail Address" required>
+                <span class="error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+                <label>Contact No.</label>
+                <input type="text" id="contact" placeholder="(91+)" required>
+                <span class="error" id="contactError"></span>
+            </div>
+            <button type="submit" class="submit-btn">SUBMIT</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            let valid = true;
+            const firstName = document.getElementById("firstName");
+            const lastName = document.getElementById("lastName");
+            const username = document.getElementById("username");
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirmPassword");
+            const email = document.getElementById("email");
+            const contact = document.getElementById("contact");
+            
+            document.querySelectorAll(".error").forEach(e => e.textContent = "");
+            
+            if (!/^[a-zA-Z]+$/.test(firstName.value)) {
+                document.getElementById("firstNameError").textContent = "First name must contain only letters";
+                valid = false;
+            }
+            if (!/^[a-zA-Z]+$/.test(lastName.value)) {
+                document.getElementById("lastNameError").textContent = "Last name must contain only letters";
+                valid = false;
+            }
+            if (!/^[a-zA-Z][a-zA-Z0-9]{4,}$/.test(username.value)) {
+                document.getElementById("usernameError").textContent = "Username must be at least 5 characters and start with a letter";
+                valid = false;
+            }
+            if (!/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password.value)) {
+                document.getElementById("passwordError").textContent = "Password must be at least 8 characters, with one uppercase, one number, and one special character";
+                valid = false;
+            }
+            if (password.value !== confirmPassword.value) {
+                document.getElementById("confirmPasswordError").textContent = "Passwords do not match";
+                valid = false;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                document.getElementById("emailError").textContent = "Invalid email address";
+                valid = false;
+            }
+            if (!/^\d{10}$/.test(contact.value)) {
+                document.getElementById("contactError").textContent = "Contact number must be 10 digits";
+                valid = false;
+            }
+            
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

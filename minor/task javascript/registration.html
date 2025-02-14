@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Today</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e2a36;
+        }
+        .form-container {
+            background-color: #2d3b48;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            width: 350px;
+            color: white;
+        }
+        .form-container h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .form-container p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        input, select {
+            background: #ffffff;
+            color: #000;
+        }
+        button {
+            background-color: #5a6268;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #767e84;
+        }
+        .gender-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .gender-container label {
+            background-color: #444c57;
+            padding: 7px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .gender-container input {
+            display: none;
+        }
+        .gender-container input:checked + label {
+            background-color: #00bcd4;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: -8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Register Today</h2>
+        <p>Fill in the data below.</p>
+        <form id="registerForm">
+            <input type="text" id="fullName" placeholder="Full Name">
+            <div class="error" id="nameError"></div>
+
+            <input type="email" id="email" placeholder="E-mail Address">
+            <div class="error" id="emailError"></div>
+
+            <select id="position">
+                <option value="">Select Position</option>
+                <option value="Developer">Developer</option>
+                <option value="Designer">Designer</option>
+                <option value="Manager">Manager</option>
+            </select>
+            <div class="error" id="positionError"></div>
+
+            <input type="password" id="password" placeholder="Password">
+            <div class="error" id="passwordError"></div>
+
+            <div class="gender-container">
+                <input type="radio" name="gender" id="male" value="Male">
+                <label for="male">Male</label>
+
+                <input type="radio" name="gender" id="female" value="Female">
+                <label for="female">Female</label>
+
+                <input type="radio" name="gender" id="secret" value="Secret">
+                <label for="secret">Secret</label>
+            </div>
+            <div class="error" id="genderError"></div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="confirm">
+                <label for="confirm">I confirm that all data are correct</label>
+            </div>
+            <div class="error" id="confirmError"></div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            // Get form elements
+            let name = document.getElementById("fullName").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let position = document.getElementById("position").value;
+            let password = document.getElementById("password").value.trim();
+            let gender = document.querySelector('input[name="gender"]:checked');
+            let confirm = document.getElementById("confirm").checked;
+
+            // Validation checks
+            document.getElementById("nameError").innerText = name ? "" : "Full Name is required.";
+            if (!name) isValid = false;
+
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            document.getElementById("emailError").innerText = email.match(emailPattern) ? "" : "Enter a valid email.";
+            if (!email.match(emailPattern)) isValid = false;
+
+            document.getElementById("positionError").innerText = position ? "" : "Please select a position.";
+            if (!position) isValid = false;
+
+            document.getElementById("passwordError").innerText = password.length >= 6 ? "" : "Password must be at least 6 characters.";
+            if (password.length < 6) isValid = false;
+
+            document.getElementById("genderError").innerText = gender ? "" : "Please select a gender.";
+            if (!gender) isValid = false;
+
+            document.getElementById("confirmError").innerText = confirm ? "" : "You must confirm the data.";
+            if (!confirm) isValid = false;
+
+            // If form is valid, show success message
+            if (isValid) {
+                alert("Registration successful!");
+                document.getElementById("registerForm").reset();
+            }
+        });
+    </script>
+
+</body>
+</html>
